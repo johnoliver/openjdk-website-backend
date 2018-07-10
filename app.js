@@ -18,6 +18,7 @@ mkdirp(process.env['VERSION'], function (err) {
 repo.listReleases(function (err, result) {
 
   const release = process.env['RELEASE'] === "true";
+  console.log("Release: " + release + " " + process.env['RELEASE']);
 
   const filteredResult = _.where(result, {prerelease: !release});
 
