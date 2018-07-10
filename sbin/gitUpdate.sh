@@ -15,7 +15,7 @@
 
 git clone git@github.com:AdoptOpenJDK/open"$VERSION"-binaries.git
 
-if [ "$RELEASES" == "true" ]; then
+if [ "$RELEASE" == "true" ]; then
   rm -rf open"$VERSION"-binaries/release.json
   mv "$VERSION"/releases.json open"$VERSION"-binaries/
   mv "$VERSION"/latest_release.json open"$VERSION"-binaries/
