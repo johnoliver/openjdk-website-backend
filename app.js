@@ -1,6 +1,7 @@
 const GitHub = require('github-api');
 const fs = require('fs')
 const mkdirp = require('mkdirp');
+const _ = require('underscore');
 
 // basic auth
 const gh = new GitHub({
