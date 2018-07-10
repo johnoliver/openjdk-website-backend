@@ -16,9 +16,9 @@
 git clone git@github.com:AdoptOpenJDK/open"$VERSION"-binaries.git
 
 if [ "$RELEASES" == "true" ]; then
-  rm -rf open"$VERSION"-releases/release.json
-  mv "$VERSION"/releases.json open"$VERSION"-releases/
-  mv "$VERSION"/latest_release.json open"$VERSION"-releases/
+  rm -rf open"$VERSION"-binaries/release.json
+  mv "$VERSION"/releases.json open"$VERSION"-binaries/
+  mv "$VERSION"/latest_release.json open"$VERSION"-binaries/
   cd $WORKSPACE/open"$VERSION"-binaries
   git add releases.json latest_release.json
   git commit -m "updated releases.json" || echo "nothing to commit"
@@ -28,9 +28,9 @@ if [ "$RELEASES" == "true" ]; then
     echo "releases already up to date"
   fi
 else
-  rm -rf open"$VERSION"-nightly/nightly.json
-  mv "$VERSION"/nightly.json open"$VERSION"-nightly/
-  mv "$VERSION"/latest_nightly.json open"$VERSION"-nightly/
+  rm -rf open"$VERSION"-binaries/nightly.json
+  mv "$VERSION"/nightly.json open"$VERSION"-binaries/
+  mv "$VERSION"/latest_nightly.json open"$VERSION"-binaries/
   cd $WORKSPACE/open"$VERSION"-binaries
   git add nightly.json latest_nightly.json
   git commit -m "updated nightly.json" || echo "nothing to commit"
