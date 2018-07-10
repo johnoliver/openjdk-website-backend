@@ -57,10 +57,11 @@ do
 done
 
 files=`ls $PWD/OpenJDK*{.tar.gz,.sha256.txt,.zip} | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'`
-if [ "$REPO" == "releases" ]; then
-  node upload.js --files $files --tag ${TIMESTAMP} --description "Official Release of $TAG" --repo $REPO
-elif [ "$REPO" == "nightly" ]; then
-  node upload.js --files $files --tag ${TAG}-${TIMESTAMP} --description "Nightly Build of $TAG" --repo $REPO
+
+if [ "$RELEASE" == "true" ]; then
+  node upload.js --files $files --tag ${TIMESTAMP} --description "Official Release of $TAG" --release "$RELEASE"
+else
+  node upload.js --files $files --tag ${TAG}-${TIMESTAMP} --description "Nightly Build of $TAG" --release "$RELEASE"
 fi
 
 node app.js

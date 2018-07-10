@@ -16,8 +16,8 @@ var optionDefinitions = [{
     type: String
   },
   {
-    name: 'repo',
-    type: String
+    name: 'release',
+    type: Boolean
   }
 ];
 
@@ -28,12 +28,12 @@ console.log('Uploading Files:', options.files);
 publishRelease({
   token: process.env['GITHUB_TOKEN'],
   owner: 'AdoptOpenJDK',
-  repo: 'open' + process.env['VERSION'] + '-' + options.repo,
+  repo: 'open' + process.env['VERSION'] + '-binaries',
   tag: options.tag,
   name: options.tag,
   notes: options.description,
   draft: false,
-  prerelease: false,
+  prerelease: !options.release,
   reuseRelease: true,
   reuseDraftOnly: false,
   assets: options.files,
