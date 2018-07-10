@@ -17,12 +17,13 @@ var optionDefinitions = [{
   },
   {
     name: 'release',
-    type: Boolean
+    type: String
   }
 ];
 
 var options = commandLineArgs(optionDefinitions);
 
+release = (options.release === "true");
 console.log('Uploading Files:', options.files);
 console.log('Release:', options.release);
 
@@ -34,7 +35,7 @@ publishRelease({
   name: options.tag,
   notes: options.description,
   draft: false,
-  prerelease: !options.release,
+  prerelease: !release,
   reuseRelease: true,
   reuseDraftOnly: false,
   assets: options.files,
