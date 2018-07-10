@@ -23,15 +23,8 @@ repo.listReleases(function (err, result) {
   const filteredResult = _.where(result, {prerelease: !release});
 
   if (release) {
-    var data = JSON.stringify(filteredResult, null, 2)
-    console.log("Writing: " + process.env['VERSION'] + '/releases.json');
-    console.log(data);
-    fs.writeFileSync(process.env['VERSION'] + '/releases.json', data);
-
-    data = JSON.stringify(filteredResult[0], null, 2)
-    console.log("Writing: " + process.env['VERSION'] + '/latest_release.json');
-    console.log(data);
-    fs.writeFileSync(process.env['VERSION'] + '/latest_release.json', JSON.stringify(data, null, 2));
+    fs.writeFileSync(process.env['VERSION'] + '/releases.json', JSON.stringify(filteredResult, null, 2));
+    fs.writeFileSync(process.env['VERSION'] + '/latest_release.json', JSON.stringify(filteredResult[0], null, 2));
   } else {
     fs.writeFileSync(process.env['VERSION'] + '/nightly.json', JSON.stringify(filteredResult, null, 2))
     fs.writeFileSync(process.env['VERSION'] + '/latest_nightly.json', JSON.stringify(filteredResult[0], null, 2))
