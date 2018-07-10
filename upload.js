@@ -24,6 +24,7 @@ var optionDefinitions = [{
 var options = commandLineArgs(optionDefinitions);
 
 console.log('Uploading Files:', options.files);
+console.log('Release:', options.release);
 
 publishRelease({
   token: process.env['GITHUB_TOKEN'],

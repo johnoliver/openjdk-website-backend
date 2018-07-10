@@ -58,6 +58,7 @@ done
 
 files=`ls $PWD/OpenJDK*{.tar.gz,.sha256.txt,.zip} | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'`
 
+echo "Release: $RELEASE"
 if [ "$RELEASE" == "true" ]; then
   node upload.js --files $files --tag ${TIMESTAMP} --description "Official Release of $TAG" --release "$RELEASE"
 else
