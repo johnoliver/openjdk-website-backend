@@ -60,9 +60,9 @@ files=`ls $PWD/OpenJDK*{.tar.gz,.sha256.txt,.zip} | sed -e ':a' -e 'N' -e '$!ba'
 
 echo "Release: $RELEASE"
 if [ "$RELEASE" == "true" ]; then
-  node upload.js --files $files --tag ${TIMESTAMP} --description "Official Release of $TAG" --release "$RELEASE"
+  node upload.js --files $files --tag ${TIMESTAMP} --description "Official Release of $TAG" --release
 else
-  node upload.js --files $files --tag ${TAG}-${TIMESTAMP} --description "Nightly Build of $TAG" --release "$RELEASE"
+  node upload.js --files $files --tag ${TAG}-${TIMESTAMP} --description "Nightly Build of $TAG"
 fi
 
 node app.js
