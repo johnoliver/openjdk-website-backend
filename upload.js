@@ -40,6 +40,7 @@ publishRelease({
   reuseDraftOnly: false,
   assets: options.files,
   editRelease: true,
+  skipAssetsCheck: true,
 }, function(err, release) {
   if (err) {
     console.error(err);
