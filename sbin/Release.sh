@@ -72,9 +72,10 @@ if [ "$RELEASE" == "true" ]; then
   if [ -z "${TAG}" ]; then
     TAG="${TIMESTAMP}"
   fi
-  node upload.js --files $files --tag ${TAG} --description "Official Release of $TAG" --release "$RELEASE"
+  TAG_NAME="$TAG_${TIMESTAMP}"
+  node upload.js --files $files --tagName ${TAG_NAME} --tag ${TAG} --description "Official Release of $TAG" --release "$RELEASE"
 else
-  node upload.js --files $files --tag ${TAG}-${TIMESTAMP} --description "Nightly Build of $TAG" --release "$RELEASE"
+  node upload.js --files $files --tagName ${TAG}-${TIMESTAMP} --tag ${TAG}-${TIMESTAMP} --description "Nightly Build of $TAG" --release "$RELEASE"
 fi
 
 node app.js
