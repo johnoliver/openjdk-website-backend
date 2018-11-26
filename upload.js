@@ -37,7 +37,7 @@ publishRelease({
   draft: false,
   prerelease: !release,
   reuseRelease: true,
-  reuseDraftOnly: false,
+  skipAssetsCheck: true,
   assets: options.files,
 }, function(err, release) {
   if (err) {
