@@ -12,10 +12,6 @@ var optionDefinitions = [{
     type: String
   },
   {
-    name: 'tagName',
-    type: String
-  },
-  {
     name: 'description',
     type: String
   },
@@ -35,16 +31,14 @@ publishRelease({
   token: process.env['GITHUB_TOKEN'],
   owner: 'AdoptOpenJDK',
   repo: 'open' + process.env['VERSION'] + '-binaries',
-  tag: options.tagName,
+  tag: options.tag,
   name: options.tag,
   notes: options.description,
   draft: false,
   prerelease: !release,
   reuseRelease: true,
   reuseDraftOnly: false,
-  assets: options.files,
-  editRelease: true,
-  skipAssetsCheck: true,
+  assets: options.files
 }, function(err, release) {
   if (err) {
     console.error(err);

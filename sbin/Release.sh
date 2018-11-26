@@ -72,11 +72,8 @@ if [ "$RELEASE" == "true" ]; then
   if [ -z "${TAG}" ]; then
     TAG="${TIMESTAMP}"
   fi
-  TAG_NAME="$TAG_${TIMESTAMP}"
-  node upload.js --files $files --tagName ${TAG_NAME} --tag ${TAG} --description "Official Release of $TAG" --release "$RELEASE"
+  TAG_NAME="${TAG}_${TIMESTAMP}"
+  ./upload-github-release-asset.sh -f "$files" -t "${TAG}" -d "Official Release of $TAG" -r "$RELEASE" -v "$VERSION"
 else
-  node upload.js --files $files --tagName ${TAG}-${TIMESTAMP} --tag ${TAG}-${TIMESTAMP} --description "Nightly Build of $TAG" --release "$RELEASE"
+  ./upload-github-release-asset.sh  -d "$files" -t "${TAG}-${TIMESTAMP}" -d "Nightly Build of $TAG" -r "$RELEASE" -v "$VERSION"
 fi
-
-node app.js
-./sbin/gitUpdate.sh
