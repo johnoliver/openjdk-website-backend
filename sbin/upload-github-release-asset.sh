@@ -12,7 +12,7 @@
 set -eu
 set +x
 
-while getopts ":f" opt; do
+while getopts "f:t:d:r:v:" opt; do
   case $opt in
     f)
       files+=("$OPTARG")
