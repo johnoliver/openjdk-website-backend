@@ -13,8 +13,6 @@
 # limitations under the License.
 #
 
-npm install
-
 #             11 style version           | 8 Style                    | 9/10 style
 versionRegex="[[:digit:]]{2}_[[:digit:]]+|8u[[:digit:]]+-?b[[:digit:]]+|[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+_[[:digit:]]+"
 timestampRegex="[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}-[[:digit:]]{2}-[[:digit:]]{2}"
@@ -67,13 +65,15 @@ done
 
 files=`ls $PWD/OpenJDK*{.tar.gz,.sha256.txt,.zip} | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'`
 
+chmod +x ./sbin/upload-github-release-asset.sh
+
 echo "Release: $RELEASE"
 if [ "$RELEASE" == "true" ]; then
   if [ -z "${TAG}" ]; then
     TAG="${TIMESTAMP}"
   fi
   TAG_NAME="${TAG}_${TIMESTAMP}"
-  ./upload-github-release-asset.sh -f "$files" -t "${TAG}" -d "Official Release of $TAG" -r "$RELEASE" -v "$VERSION"
+  ./sbin/upload-github-release-asset.sh -f "$files" -t "${TAG}" -d "Official Release of $TAG" -r "$RELEASE" -v "$VERSION"
 else
-  ./upload-github-release-asset.sh  -d "$files" -t "${TAG}-${TIMESTAMP}" -d "Nightly Build of $TAG" -r "$RELEASE" -v "$VERSION"
+  ./sbin/upload-github-release-asset.sh  -d "$files" -t "${TAG}-${TIMESTAMP}" -d "Nightly Build of $TAG" -r "$RELEASE" -v "$VERSION"
 fi
