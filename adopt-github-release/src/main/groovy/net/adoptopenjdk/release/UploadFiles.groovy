@@ -48,6 +48,7 @@ class UploadAdoptReleaseFiles {
         List<GHAsset> assets = release.getAssets()
         files.each { file ->
             // Delete existing asset
+            assets
                     .find({ it.name == file.name })
                     .each { GHAsset existing ->
                 println("Updating ${existing.name}")
