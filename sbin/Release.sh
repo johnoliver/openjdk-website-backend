@@ -13,8 +13,6 @@
 # limitations under the License.
 #
 
-npm install
-
 #             11 style version           | 8 Style                     | 9/10 style
 versionRegex="[[:digit:]]{2}_[[:digit:]]+|8u[[:digit:]]+-?(b[[:digit:]]+|ga)|[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+_[[:digit:]]+"
 timestampRegex="[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}-[[:digit:]]{2}-[[:digit:]]{2}"
@@ -78,5 +76,5 @@ fi
 
 cd adopt-github-release
 chmod +x gradlew
-./gradlew
+./gradlew wrapper
 ./gradlew run --args="--tag \"${TAG}\" --description \"${description}\" --release \"$RELEASE\" $files"
