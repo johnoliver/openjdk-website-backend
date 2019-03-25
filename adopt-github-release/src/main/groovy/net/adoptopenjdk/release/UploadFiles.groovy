@@ -36,11 +36,11 @@ class UploadAdoptReleaseFiles {
     private GHRepository getRepo() {
         String token = System.getenv("GITHUB_TOKEN")
         if (token == null) {
-            System.err.println("Could not find GITHUB_TOKEN");
-            System.exit(1);
+            System.err.println("Could not find GITHUB_TOKEN")
+            System.exit(1)
         }
 
-        GitHub github = GitHub.connectUsingOAuth(token);
+        GitHub github = GitHub.connectUsingOAuth(token)
         return github.getRepository("AdoptOpenJDK/open${version}-binaries")
     }
 
