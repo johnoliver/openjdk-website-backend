@@ -41,7 +41,7 @@ class UploadAdoptReleaseFiles {
         }
 
         GitHub github = GitHub.connectUsingOAuth(token);
-        return github.getRepository("AdoptOpenJDK/openjdk${version}-binaries")
+        return github.getRepository("AdoptOpenJDK/open${version}-binaries")
     }
 
     private void uploadFiles(GHRelease release) {

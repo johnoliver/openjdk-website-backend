@@ -78,6 +78,4 @@ fi
 
 cd adopt-github-release
 chmod +x gradlew
-echo "--tag \"${TAG}\" --description \"${description}\" $RELEASE_OPTION $files"
-
-./gradlew run --args="--tag \"${TAG}\" --description \"${description}\" $RELEASE_OPTION $files"
+./gradlew run --args="--version \"${VERSION}\" --tag \"${TAG}\" --description \"${description}\" $RELEASE_OPTION $files"
