@@ -76,5 +76,4 @@ fi
 
 cd adopt-github-release
 chmod +x gradlew
-./gradlew wrapper
 ./gradlew run --args="--tag \"${TAG}\" --description \"${description}\" --release \"$RELEASE\" $files"
