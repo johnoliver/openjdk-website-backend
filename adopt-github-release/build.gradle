@@ -3,10 +3,6 @@ plugins {
     id 'application'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '5.3'
-}
-
 group 'net.adoptopenjdk.release'
 version '1.0-SNAPSHOT'
 
