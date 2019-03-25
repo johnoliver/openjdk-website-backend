@@ -68,12 +68,14 @@ files=`ls $PWD/OpenJDK*{.tar.gz,.sha256.txt,.zip,.pkg,.msi} | sed -e ':a' -e 'N'
 
 echo "Release: $RELEASE"
 
+RELEASE_OPTION=""
 if [ "$RELEASE" == "true" ]; then
   description="Official Release of $TAG"
+  RELEASE_OPTION="--release"
 else
   description="Nightly Build of $TAG"
 fi
 
 cd adopt-github-release
 chmod +x gradlew
-./gradlew run --args="--tag \"${TAG}\" --description \"${description}\" --release \"$RELEASE\" $files"
+./gradlew run --args="--tag=\"${TAG}\" --description \"${description}\" $RELEASE_OPTION $files"
